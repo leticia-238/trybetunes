@@ -26,18 +26,17 @@ class Login extends React.Component {
 
   render() {
     const { loginName, saveUserIsloading, saveUserIsFinished } = this.state;
+    const { ...rest } = this.props;
     const minNumOfChars = 3;
 
     return (
-      <Route exact path="/">
-        {saveUserIsFinished
-          ? <Redirect to="/search" />
-          : (
+      <Route { ...rest }>
+        {!saveUserIsFinished
+          ? (
             <div data-testid="page-login">
               Login
-              {saveUserIsloading
-                ? <LoadingMessage />
-                : (
+              {!saveUserIsloading
+                ? (
                   <form>
                     <label htmlFor="login-name-input">
                       Nome de usuário
@@ -59,8 +58,10 @@ class Login extends React.Component {
                       Entrar
                     </button>
                   </form>
-                )}
-            </div>)}
+                )
+                : <LoadingMessage />}
+            </div>)
+          : <Redirect to="/search" />}
       </Route>
     );
   }
