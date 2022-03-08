@@ -42,24 +42,27 @@ class Header extends React.Component {
                   </p>
                 </div>
               </header>
-              <nav>
+              <nav className="nav-bar">
                 <Link
                   to="/search"
                   data-testid="link-to-search"
+                  className="nav-link"
                 >
-                  <div>Pesquisa</div>
+                  Pesquisa
                 </Link>
                 <Link
                   to="/favorites"
                   data-testid="link-to-favorites"
+                  className="nav-link"
                 >
-                  <div>Favoritas</div>
+                  Favoritas
                 </Link>
                 <Link
                   to="/profile"
                   data-testid="link-to-profile"
+                  className="nav-link"
                 >
-                  <div>Perfil</div>
+                  Perfil
                 </Link>
               </nav>
             </>
