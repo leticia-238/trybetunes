@@ -4,6 +4,8 @@ import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
 
 class Login extends React.Component {
+  isMount = false;
+
   constructor() {
     super();
     this.state = {
@@ -13,15 +15,24 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.isMount = true;
+  }
+
+  componentWillUnmount() {
+    this.isMount = false;
+  }
+
   handleInput = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
 
-  saveUserOnClick = () => {
-    const { loginName } = this.state;
+  saveUserOnClick = async (loginName) => {
     this.setState({ saveUserIsloading: true });
-    createUser({ name: loginName })
-      .then(() => this.setState({ saveUserIsFinished: true }));
+    const response = await createUser({ name: loginName });
+    if (this.isMount) {
+      this.setState({ saveUserIsFinished: response === 'OK' });
+    }
   }
 
   render() {
@@ -31,12 +42,14 @@ class Login extends React.Component {
 
     return (
       <Route { ...rest }>
-        {!saveUserIsFinished
-          ? (
+        {saveUserIsFinished
+          ? <Redirect to="/search" />
+          : (
             <div data-testid="page-login">
               Login
-              {!saveUserIsloading
-                ? (
+              {saveUserIsloading
+                ? <LoadingMessage />
+                : (
                   <form>
                     <label htmlFor="login-name-input">
                       Nome de usuário
@@ -53,15 +66,12 @@ class Login extends React.Component {
                       type="button"
                       data-testid="login-submit-button"
                       disabled={ loginName.length < minNumOfChars }
-                      onClick={ this.saveUserOnClick }
+                      onClick={ () => this.saveUserOnClick(loginName) }
                     >
                       Entrar
                     </button>
-                  </form>
-                )
-                : <LoadingMessage />}
-            </div>)
-          : <Redirect to="/search" />}
+                  </form>)}
+            </div>)}
       </Route>
     );
   }
