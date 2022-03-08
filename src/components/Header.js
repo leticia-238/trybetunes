@@ -1,6 +1,7 @@
 import React from 'react';
 import { getUser } from '../services/userAPI';
 import LoadingMessage from './LoadingMessage';
+import LogoHeader from '../assets/logoHeader.png';
 
 class Header extends React.Component {
   constructor() {
@@ -22,8 +23,22 @@ class Header extends React.Component {
       <div>
         {user
           ? (
-            <header data-testid="header-component">
-              <p data-testid="header-user-name">{ user.name }</p>
+            <header data-testid="header-component" className="header">
+              <img
+                src={ LogoHeader }
+                alt="Logo TrybeTunes"
+                className="logo-header"
+              />
+              <div className="user-box-header">
+                <div className="header-user-image" />
+                <p
+                  data-testid="header-user-name"
+                  className="header-user-name"
+                >
+                  { user.name }
+
+                </p>
+              </div>
             </header>
           )
           : <LoadingMessage />}
