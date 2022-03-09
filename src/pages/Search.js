@@ -24,8 +24,7 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <label htmlFor="search-artist-input">
-          Nome do Artista
+        <form className="search-box">
           <input
             type="text"
             data-testid="search-artist-input"
@@ -33,16 +32,19 @@ class Search extends React.Component {
             name="artistName"
             value={ artistName }
             onChange={ this.handleInput }
+            placeholder="Nome do Artista"
+            className="input-field"
           />
-        </label>
-        <button
-          type="button"
-          data-testid="search-artist-button"
-          onClick={ this.searchArtist }
-          disabled={ artistName.length < minNumOfChars }
-        >
-          Pesquisar
-        </button>
+          <button
+            type="button"
+            data-testid="search-artist-button"
+            onClick={ this.searchArtist }
+            disabled={ artistName.length < minNumOfChars }
+            className="btn"
+          >
+            Pesquisar
+          </button>
+        </form>
       </div>
     );
   }

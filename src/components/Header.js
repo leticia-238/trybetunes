@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import LoadingMessage from './LoadingMessage';
-import LogoHeader from '../assets/logoHeader.png';
+import LogoHeader from '../assets/LogoHeader.svg';
 
 class Header extends React.Component {
   constructor() {

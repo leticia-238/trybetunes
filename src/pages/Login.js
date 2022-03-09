@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
+import LogoTrybeTunes from '../assets/LogoTrybeTunes.svg';
 
 class Login extends React.Component {
   isMount = false;
@@ -45,28 +46,28 @@ class Login extends React.Component {
         {saveUserIsFinished
           ? <Redirect to="/search" />
           : (
-            <div data-testid="page-login">
-              Login
+            <div data-testid="page-login" className="page-login">
+              <img src={ LogoTrybeTunes } alt="Logo TrybeTunes" className="logo" />
               {saveUserIsloading
                 ? <LoadingMessage />
                 : (
-                  <form>
-                    <label htmlFor="login-name-input">
-                      Nome de usuário
-                      <input
-                        type="text"
-                        data-testid="login-name-input"
-                        id="login-name-input"
-                        name="loginName"
-                        value={ loginName }
-                        onChange={ this.handleInput }
-                      />
-                    </label>
+                  <form className="login-box">
+                    <input
+                      type="text"
+                      data-testid="login-name-input"
+                      id="login-name-input"
+                      name="loginName"
+                      value={ loginName }
+                      onChange={ this.handleInput }
+                      placeholder="Nome de usuário"
+                      className="input-field"
+                    />
                     <button
                       type="button"
                       data-testid="login-submit-button"
                       disabled={ loginName.length < minNumOfChars }
                       onClick={ () => this.saveUserOnClick(loginName) }
+                      className="btn"
                     >
                       Entrar
                     </button>
