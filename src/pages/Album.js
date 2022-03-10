@@ -29,18 +29,14 @@ class Album extends React.Component {
       });
     });
     getFavoriteSongs().then((response) => {
-      this.setState({ favoriteSongsList: response });
+      this.setState({
+        favoriteSongsList: response.map(({ trackId }) => trackId),
+      });
     });
   }
 
-  checkFavoriteSong = (trackId) => {
-    const { favoriteSongsList } = this.state;
-    return favoriteSongsList
-      .find((song) => song.trackId === trackId) !== undefined;
-  }
-
   render() {
-    const { songsList, ...rest } = this.state;
+    const { songsList, favoriteSongsList, ...rest } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -51,7 +47,7 @@ class Album extends React.Component {
               key={ trackId }
               { ...dataMusic }
               trackId={ trackId }
-              saveFavoriteSong={ this.checkFavoriteSong(trackId) }
+              favoriteSongsList={ favoriteSongsList }
             />
           ))
         }

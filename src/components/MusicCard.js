@@ -4,10 +4,10 @@ import { addSong } from '../services/favoriteSongsAPI';
 import LoadingMessage from './LoadingMessage';
 
 class MusicCard extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      favoriteSong: props.saveFavoriteSong,
+      favoriteSong: false,
       addSongIsLoading: false,
     };
   }
@@ -21,8 +21,9 @@ class MusicCard extends React.Component {
   }
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, favoriteSongsList } = this.props;
     const { favoriteSong, addSongIsLoading } = this.state;
+
     return (
       <div>
         {addSongIsLoading
@@ -42,7 +43,7 @@ class MusicCard extends React.Component {
                   type="checkbox"
                   id={ `checkbox-music-${trackId}` }
                   data-testid={ `checkbox-music-${trackId}` }
-                  checked={ favoriteSong }
+                  checked={ favoriteSongsList.includes(trackId) || favoriteSong }
                   onChange={ this.checkFavoriteSong }
                 />
               </label>
@@ -57,7 +58,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  saveFavoriteSong: PropTypes.bool.isRequired,
+  favoriteSongsList: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default MusicCard;
