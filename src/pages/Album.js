@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import AlbumCard from '../components/AlbumCard';
 import MusicCard from '../components/MusicCard';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -14,7 +13,6 @@ class Album extends React.Component {
       artistName: '',
       collectionName: '',
       artworkUrl100: '',
-      favoriteSongsList: [],
     };
   }
 
@@ -28,26 +26,20 @@ class Album extends React.Component {
         artworkUrl100: response[0].artworkUrl100,
       });
     });
-    getFavoriteSongs().then((response) => {
-      this.setState({
-        favoriteSongsList: response.map(({ trackId }) => trackId),
-      });
-    });
   }
 
   render() {
-    const { songsList, favoriteSongsList, ...rest } = this.state;
+    const { songsList, ...albumData } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        <AlbumCard { ...rest } />
+        <AlbumCard { ...albumData } />
         {
-          songsList.map(({ trackId, ...dataMusic }) => (
+          songsList.map(({ trackId, ...songData }) => (
             <MusicCard
               key={ trackId }
-              { ...dataMusic }
+              { ...songData }
               trackId={ trackId }
-              favoriteSongsList={ favoriteSongsList }
             />
           ))
         }
