@@ -30,14 +30,13 @@ class Album extends React.Component {
 
   render() {
     const { musicsList, ...rest } = this.state;
-    console.log(musicsList);
     return (
       <div data-testid="page-album">
         <Header />
         <AlbumCard { ...rest } />
         {
           musicsList.map(({ trackId, ...dataMusic }) => (
-            <MusicCard key={ trackId } { ...dataMusic } />
+            <MusicCard key={ trackId } { ...dataMusic } trackId={ trackId } />
           ))
         }
       </div>
