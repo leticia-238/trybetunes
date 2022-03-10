@@ -4,17 +4,16 @@ import { addSong } from '../services/favoriteSongsAPI';
 import LoadingMessage from './LoadingMessage';
 
 class MusicCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      favoriteSong: false,
+      favoriteSong: props.saveFavoriteSong,
       addSongIsLoading: false,
     };
   }
 
   checkFavoriteSong = async ({ target: { checked } }) => {
     this.setState({ favoriteSong: checked, addSongIsLoading: true });
-    console.log(checked);
     if (checked) {
       await addSong(this.props);
       this.setState({ addSongIsLoading: false });
@@ -58,6 +57,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  saveFavoriteSong: PropTypes.bool.isRequired,
 };
 
 export default MusicCard;

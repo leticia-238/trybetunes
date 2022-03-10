@@ -4,15 +4,17 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import AlbumCard from '../components/AlbumCard';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
     super();
     this.state = {
-      musicsList: [],
+      songsList: [],
       artistName: '',
       collectionName: '',
       artworkUrl100: '',
+      favoriteSongsList: [],
     };
   }
 
@@ -20,23 +22,37 @@ class Album extends React.Component {
     const { id } = this.props;
     getMusics(id).then((response) => {
       this.setState({
-        musicsList: response.filter(({ kind }) => kind === 'song'),
+        songsList: response.filter(({ kind }) => kind === 'song'),
         artistName: response[0].artistName,
         collectionName: response[0].collectionName,
         artworkUrl100: response[0].artworkUrl100,
       });
     });
+    getFavoriteSongs().then((response) => {
+      this.setState({ favoriteSongsList: response });
+    });
+  }
+
+  checkFavoriteSong = (trackId) => {
+    const { favoriteSongsList } = this.state;
+    return favoriteSongsList
+      .find((song) => song.trackId === trackId) !== undefined;
   }
 
   render() {
-    const { musicsList, ...rest } = this.state;
+    const { songsList, ...rest } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
         <AlbumCard { ...rest } />
         {
-          musicsList.map(({ trackId, ...dataMusic }) => (
-            <MusicCard key={ trackId } { ...dataMusic } trackId={ trackId } />
+          songsList.map(({ trackId, ...dataMusic }) => (
+            <MusicCard
+              key={ trackId }
+              { ...dataMusic }
+              trackId={ trackId }
+              saveFavoriteSong={ this.checkFavoriteSong(trackId) }
+            />
           ))
         }
       </div>
