@@ -2,9 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import LoadingMessage from '../components/LoadingMessage';
-import AlbumCard from '../components/AlbumCard';
+import AlbumList from '../components/AlbumList';
 
 class Search extends React.Component {
+  isMount = false
+
   constructor() {
     super();
     this.state = {
@@ -16,20 +18,31 @@ class Search extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.isMount = true;
+  }
+
+  componentWillUnmount() {
+    this.isMount = false;
+  }
+
   handleInput = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   }
 
   searchArtist = async (artist) => {
-    this.setState(
-      { artistName: '', searchArtistIsLoading: true, saveArtistName: artist },
-    );
-    const response = await searchAlbumsAPI(artist);
     this.setState({
-      searchArtistIsLoading: false,
-      searchArtistIsFinished: true,
-      albumData: response,
-    });
+      artistName: '',
+      searchArtistIsLoading: true,
+      saveArtistName: artist });
+    const response = await searchAlbumsAPI(artist);
+    if (this.isMount) {
+      this.setState({
+        searchArtistIsLoading: false,
+        searchArtistIsFinished: true,
+        albumData: response,
+      });
+    }
   }
 
   render() {
@@ -71,13 +84,7 @@ class Search extends React.Component {
                     <p>
                       { `Resultado de álbuns de: ${saveArtistName}` }
                     </p>
-                    <div>
-                      { albumData.length > 0
-                        ? albumData.map((album) => (
-                          <AlbumCard { ...album } key={ album.collectionId } />
-                        ))
-                        : <span>Nenhum álbum foi encontrado</span>}
-                    </div>
+                    <AlbumList albumData={ albumData } />
                   </>
                 )
                 : ''}
