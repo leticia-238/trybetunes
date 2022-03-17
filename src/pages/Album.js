@@ -40,6 +40,7 @@ class Album extends React.Component {
               key={ trackId }
               { ...songData }
               trackId={ trackId }
+              removeFromFavorites={ () => {} }
             />
           ))
         }

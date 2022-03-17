@@ -4,7 +4,7 @@ import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongs
 import LoadingMessage from './LoadingMessage';
 
 class MusicCard extends React.Component {
-  favoriteList = []
+  isMount = false
 
   constructor() {
     super();
@@ -15,23 +15,33 @@ class MusicCard extends React.Component {
   }
 
   componentDidMount() {
+    this.isMount = true;
     const { trackId } = this.props;
     getFavoriteSongs().then((response) => {
-      this.setState({
-        favoriteSong: response.map((song) => song.trackId).includes(trackId),
-      });
+      if (this.isMount) {
+        this.setState({
+          favoriteSong: response.map((song) => song.trackId).includes(trackId),
+        });
+      }
     });
+  }
+
+  componentWillUnmount() {
+    this.isMount = false;
   }
 
   checkFavoriteSong = async ({ target: { checked } }) => {
     this.setState({ favoriteSong: checked, addSongIsLoading: true });
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, removeFromFavorites } = this.props;
     if (checked) {
       await addSong({ trackName, previewUrl, trackId });
     } else {
       await removeSong({ trackName, previewUrl, trackId });
+      removeFromFavorites(trackId);
     }
-    this.setState({ addSongIsLoading: false });
+    if (this.isMount) {
+      this.setState({ addSongIsLoading: false });
+    }
   }
 
   render() {
@@ -71,6 +81,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
 };
 
 export default MusicCard;
