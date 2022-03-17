@@ -98,13 +98,16 @@ body {
   color: white;
 }
 
-.login-box{
-  display: flex;
+.page-login .form-box{
   flex-direction: column;
-  width: 430px;
+  width: 420px;
+  display: flex;
+  padding: 60px;
+}
+
+.form-box{
   background-color: white;
   box-shadow: 0 4px 4px #cacaca;
-  padding: 60px;
   border-radius: 10px;
 }
 
@@ -112,7 +115,7 @@ body {
   font-family: inherit;
   font-size: 0.9rem;
   border-radius: 3px;
-  margin: 5px;
+  margin: 5px 0;
   padding: 8px;
   outline: none;
 }
@@ -142,4 +145,48 @@ body {
   padding: 50px 0;
   align-items: center;
   justify-content: center;
+}
+
+.search-box .input-field{
+  margin-right: 10px;
+  width: 400px;
+}
+
+.label-box{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 10px 0;
+}
+
+.user-image{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  align-self: center;
+ margin-right: 20px;
+  grid-row: 1 / span 3 ;
+}
+
+.page-profile{
+  display: flex;
+  justify-content: center;
+}
+
+.page-profile .form-box{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.description{
+  grid-column: 1 / span 2;
+}
+
+textarea{resize: none;}
+
+.page-profile .btn{
+  grid-column: 1 / span 2;
 }

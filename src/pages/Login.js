@@ -51,7 +51,7 @@ class Login extends React.Component {
               {saveUserIsloading
                 ? <LoadingMessage />
                 : (
-                  <form className="login-box">
+                  <form className="form-box">
                     <input
                       type="text"
                       data-testid="login-name-input"
