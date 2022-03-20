@@ -15,14 +15,14 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Login exact path="/" />
-          <Route path="/search" render={ () => <Search /> } />
+          <Route exact path="/search" render={ () => <Search /> } />
           <Route
             path="/album/:id"
             render={ ({ match }) => <Album { ...match.params } /> }
           />
-          <Route path="/favorites" render={ () => <Favorites /> } />
+          <Route exact path="/favorites" render={ () => <Favorites /> } />
           <Route exact path="/profile" render={ () => <Profile /> } />
-          <Route path="/profile/edit" render={ () => <ProfileEdit /> } />
+          <ProfileEdit exact path="/profile/edit" />
           <Route path="*" render={ () => <NotFound /> } />
         </Switch>
       </BrowserRouter>

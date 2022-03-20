@@ -30,7 +30,6 @@ class Favorites extends React.Component {
   }
 
   removeFromFavorites = (trackId) => {
-    console.log(trackId);
     this.setState(({ favoriteSongsList }) => {
       const newList = favoriteSongsList.filter((song) => song.trackId !== trackId);
       return { favoriteSongsList: newList };
@@ -49,7 +48,7 @@ class Favorites extends React.Component {
               <MusicCard
                 { ...songData }
                 key={ trackId }
-                trackId={ trackId }
+                trackId={ parseInt(trackId, 10) }
                 removeFromFavorites={ this.removeFromFavorites }
               />
             ))
