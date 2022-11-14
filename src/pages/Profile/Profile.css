@@ -1,21 +1,40 @@
 .page-profile {
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  margin-top: 30px;
 }
 
-.page-profile .form-box {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  margin-top: 20px;
-  padding: 30px;
+.profile-image {
+  align-self: center;
+  border: 1px solid #2fc18c;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 16px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.user-email {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.user-description {
+  color: rgb(122 122 122);
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 10px;
 }
 
 .description {
   grid-column: 1 / span 2;
 }
 
-textarea { resize: none;}
-
-.page-profile .btn {
-  grid-column: 1 / span 2;
-}

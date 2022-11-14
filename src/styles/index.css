@@ -56,16 +56,6 @@ body {
   margin: 10px 0;
 }
 
-.user-image {
-  align-self: center;
-  border: 1px solid black;
-  border-radius: 50%;
-  grid-row: 1 / span 3;
-  height: 150px;
-  margin-right: 20px;
-  width: 150px;
-}
-
 .container {
   display: grid;
   grid-template-columns: auto;

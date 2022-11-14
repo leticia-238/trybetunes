@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import LoadingMessage from '../../components/LoadingMessage/LoadingMessage';
 import { getUser } from '../../services/userAPI';
 import './Profile.css'
+import UserIcon from '../../assets/user-icon.png'
 
 class Profile extends React.Component {
   constructor() {
@@ -30,12 +31,18 @@ class Profile extends React.Component {
         {isLoading
           ? <LoadingMessage />
           : (
-            <div>
-              <img data-testid="profile-image" src={ image } alt="Imagem do usuário" />
-              <h2>{ userName }</h2>
-              <p>{ email }</p>
-              <p>{ description }</p>
-              <Link to={`${ basePath }/profile/edit`}>Editar perfil</Link>
+            <div className='page-profile'>
+              <img 
+                className="profile-image" 
+                src={ image &&  UserIcon } 
+                alt="Imagem do usuário" 
+              />
+              <h2 className='user-name'>{ userName }</h2>
+              <p className='user-email'>{ email }</p>
+              <p className='user-description'>{ description }</p>
+              <Link to={`${ basePath }/profile/edit`} className="btn">
+                Editar perfil
+              </Link>
             </div>
           )}
       </div>

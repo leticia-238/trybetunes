@@ -5,6 +5,7 @@ import LoadingMessage from '../LoadingMessage/LoadingMessage';
 import LogoHeader from '../../assets/LogoHeader.svg';
 import { basePath } from '../../App';
 import './Header.css'
+import UserIcon from '../../assets/user-icon.png'
 
 class Header extends React.Component {
   constructor() {
@@ -34,7 +35,9 @@ class Header extends React.Component {
                   className="logo-header"
                 />
                 <div className="user-box-header">
-                  <div className="header-user-image" />
+                  <div className="header-user-image">
+                    <img src={ user.image && UserIcon } alt="Imagem do usuário" />
+                  </div>
                   <p
                     data-testid="header-user-name"
                     className="header-user-name"

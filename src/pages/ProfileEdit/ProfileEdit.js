@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { basePath } from '../App';
-import Header from '../components/Header/Header';
-import LoadingMessage from '../components/LoadingMessage/LoadingMessage';
-import { getUser, updateUser } from '../services/userAPI';
+import { basePath } from '../../App';
+import Header from '../../components/Header/Header';
+import LoadingMessage from '../../components/LoadingMessage/LoadingMessage';
+import { getUser, updateUser } from '../../services/userAPI';
+import './ProfileEdit.css'
 
 class ProfileEdit extends React.Component {
   isMount = false;
@@ -52,27 +53,27 @@ class ProfileEdit extends React.Component {
     const { userName, email, image, description } = this.state;
     const regexForEmail = /\S+@\S+\.com/;
     return userName.trim().length > 0 && image.trim().length > 0
-    && description.trim().length > 0 && regexForEmail.test(email);
+      && description.trim().length > 0 && regexForEmail.test(email);
   }
 
   render() {
     const { editFinished, isLoading, userName, email, image, description } = this.state;
     const { ...rest } = this.props;
     return (
-      <Route { ...rest }>
+      <Route {...rest}>
         {editFinished
-          ? <Redirect to={`${ basePath }/profile`} />
+          ? <Redirect to={`${basePath}/profile`} />
           : (
             <div data-testid="page-profile-edit">
               <Header />
               {isLoading
                 ? <LoadingMessage />
                 : (
-                  <div className="page-profile">
+                  <div className="page-profile-edit">
                     <form className="form-box">
                       <img
                         data-testid="profile-image"
-                        src={ image }
+                        src={image}
                         alt="Imagem do usuário"
                         className="user-image"
                       />
@@ -83,8 +84,8 @@ class ProfileEdit extends React.Component {
                           name="userName"
                           id="edit-input-name"
                           data-testid="edit-input-name"
-                          value={ userName }
-                          onChange={ this.handleChange }
+                          value={userName}
+                          onChange={this.handleChange}
                           className="input-field"
                         />
                       </label>
@@ -95,8 +96,8 @@ class ProfileEdit extends React.Component {
                           name="email"
                           id="edit-input-email"
                           data-testid="edit-input-email"
-                          value={ email }
-                          onChange={ this.handleChange }
+                          value={email}
+                          onChange={this.handleChange}
                           className="input-field"
                         />
                       </label>
@@ -107,8 +108,8 @@ class ProfileEdit extends React.Component {
                           name="image"
                           id="edit-input-image"
                           data-testid="edit-input-image"
-                          value={ image }
-                          onChange={ this.handleChange }
+                          value={image}
+                          onChange={this.handleChange}
                           className="input-field"
                         />
                       </label>
@@ -121,17 +122,17 @@ class ProfileEdit extends React.Component {
                           name="description"
                           id="edit-input-description"
                           data-testid="edit-input-description"
-                          onChange={ this.handleChange }
+                          onChange={this.handleChange}
                           className="input-field"
-                          value={ description }
+                          value={description}
                         />
                       </label>
                       <button
                         type="button"
                         data-testid="edit-button-save"
-                        disabled={ !this.validForm() }
+                        disabled={!this.validForm()}
                         className="btn"
-                        onClick={ this.handleClick }
+                        onClick={this.handleClick}
                       >
                         Salvar
                       </button>

@@ -5,7 +5,7 @@ import Search from './pages/Search/Search';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile/Profile';
-import ProfileEdit from './pages/ProfileEdit';
+import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import NotFound from './pages/NotFound';
 import './styles/index.css';
 
