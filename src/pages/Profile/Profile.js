@@ -34,7 +34,7 @@ class Profile extends React.Component {
             <div className='page-profile'>
               <img 
                 className="profile-image" 
-                src={ image &&  UserIcon } 
+                src={ image ? image : UserIcon } 
                 alt="Imagem do usuário" 
               />
               <h2 className='user-name'>{ userName }</h2>

@@ -36,7 +36,7 @@ class Header extends React.Component {
                 />
                 <div className="user-box-header">
                   <div className="header-user-image">
-                    <img src={ user.image && UserIcon } alt="Imagem do usuário" />
+                    <img src={ user.image ? user.image : UserIcon } alt="Imagem do usuário" />
                   </div>
                   <p
                     data-testid="header-user-name"
