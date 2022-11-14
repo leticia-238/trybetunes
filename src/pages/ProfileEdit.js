@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { basePath } from '../App';
 import Header from '../components/Header/Header';
-import LoadingMessage from '../components/LoadingMessage';
+import LoadingMessage from '../components/LoadingMessage/LoadingMessage';
 import { getUser, updateUser } from '../services/userAPI';
 
 class ProfileEdit extends React.Component {

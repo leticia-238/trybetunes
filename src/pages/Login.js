@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { createUser } from '../services/userAPI';
-import LoadingMessage from '../components/LoadingMessage';
+import LoadingMessage from '../components/LoadingMessage/LoadingMessage';
 import LogoTrybeTunes from '../assets/LogoTrybeTunes.svg';
 import { basePath } from '../App';
 import '../styles/Login.css'

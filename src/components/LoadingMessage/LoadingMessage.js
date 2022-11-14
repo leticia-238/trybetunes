@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Loading.css'
+import './Loading.css'
 
 class LoadingMessage extends React.Component {
   render() {

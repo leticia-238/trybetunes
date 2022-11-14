@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../../services/userAPI';
-import LoadingMessage from '../LoadingMessage';
+import LoadingMessage from '../LoadingMessage/LoadingMessage';
 import LogoHeader from '../../assets/LogoHeader.svg';
 import { basePath } from '../../App';
 import './Header.css'
