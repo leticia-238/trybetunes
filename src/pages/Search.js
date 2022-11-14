@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import LoadingMessage from '../components/LoadingMessage';
 import AlbumList from '../components/AlbumList';

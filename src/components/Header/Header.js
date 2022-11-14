@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../services/userAPI';
-import LoadingMessage from './LoadingMessage';
-import LogoHeader from '../assets/LogoHeader.svg';
-import { basePath } from '../App';
-import '../styles/Header.css'
+import { getUser } from '../../services/userAPI';
+import LoadingMessage from '../LoadingMessage';
+import LogoHeader from '../../assets/LogoHeader.svg';
+import { basePath } from '../../App';
+import './Header.css'
 
 class Header extends React.Component {
   constructor() {

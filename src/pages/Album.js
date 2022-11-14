@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import getMusics from '../services/musicsAPI';
 import AlbumCard from '../components/AlbumCard/AlbumCard';
 import MusicCard from '../components/MusicCard';
