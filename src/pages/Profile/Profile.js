@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { basePath } from '../App';
-import Header from '../components/Header/Header';
-import LoadingMessage from '../components/LoadingMessage/LoadingMessage';
-import { getUser } from '../services/userAPI';
-import '../styles/Profile.css'
+import { basePath } from '../../App';
+import Header from '../../components/Header/Header';
+import LoadingMessage from '../../components/LoadingMessage/LoadingMessage';
+import { getUser } from '../../services/userAPI';
+import './Profile.css'
 
 class Profile extends React.Component {
   constructor() {

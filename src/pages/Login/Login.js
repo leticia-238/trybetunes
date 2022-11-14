@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { createUser } from '../services/userAPI';
-import LoadingMessage from '../components/LoadingMessage/LoadingMessage';
-import LogoTrybeTunes from '../assets/LogoTrybeTunes.svg';
-import { basePath } from '../App';
-import '../styles/Login.css'
+import { createUser } from '../../services/userAPI';
+import LoadingMessage from '../../components/LoadingMessage/LoadingMessage';
+import LogoTrybeTunes from '../../assets/LogoTrybeTunes.svg';
+import { basePath } from '../../App';
+import './Login.css'
 
 class Login extends React.Component {
   isMount = false;
@@ -44,12 +44,12 @@ class Login extends React.Component {
     const minNumOfChars = 3;
 
     return (
-      <Route { ...rest }>
+      <Route {...rest}>
         {saveUserIsFinished
-          ? <Redirect to={`${ basePath }/search`} />
+          ? <Redirect to={`${basePath}/search`} />
           : (
             <div data-testid="page-login" className="page-login">
-              <img src={ LogoTrybeTunes } alt="Logo TrybeTunes" className="logo" />
+              <img src={LogoTrybeTunes} alt="Logo TrybeTunes" className="logo" />
               {saveUserIsloading
                 ? <LoadingMessage />
                 : (
@@ -59,16 +59,16 @@ class Login extends React.Component {
                       data-testid="login-name-input"
                       id="login-name-input"
                       name="loginName"
-                      value={ loginName }
-                      onChange={ this.handleInput }
+                      value={loginName}
+                      onChange={this.handleInput}
                       placeholder="Nome de usuário"
                       className="input-field"
                     />
                     <button
                       type="button"
                       data-testid="login-submit-button"
-                      disabled={ loginName.length < minNumOfChars }
-                      onClick={ () => this.saveUserOnClick(loginName) }
+                      disabled={loginName.length < minNumOfChars}
+                      onClick={() => this.saveUserOnClick(loginName)}
                       className="btn"
                     >
                       Entrar
