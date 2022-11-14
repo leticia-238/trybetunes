@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AlbumCard from './AlbumCard';
+import { basePath } from '../App'
 
 class AlbumList extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class AlbumList extends React.Component {
           ? (
             albumData.map(({ collectionId, ...rest }) => (
               <Link
-                to={ `/album/${collectionId}` }
+                to={ `${ basePath }/album/${collectionId}` }
                 data-testid={ `link-to-album-${collectionId}` }
                 key={ collectionId }
               >

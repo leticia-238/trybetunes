@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { basePath } from '../App';
 import Header from '../components/Header';
 import LoadingMessage from '../components/LoadingMessage';
 import { getUser, updateUser } from '../services/userAPI';
@@ -60,7 +61,7 @@ class ProfileEdit extends React.Component {
     return (
       <Route { ...rest }>
         {editFinished
-          ? <Redirect to="/profile" />
+          ? <Redirect to={`${ basePath }/profile`} />
           : (
             <div data-testid="page-profile-edit">
               <Header />

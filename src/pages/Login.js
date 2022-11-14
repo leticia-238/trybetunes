@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
 import LogoTrybeTunes from '../assets/LogoTrybeTunes.svg';
+import { basePath } from '../App';
 
 class Login extends React.Component {
   isMount = false;
@@ -44,7 +45,7 @@ class Login extends React.Component {
     return (
       <Route { ...rest }>
         {saveUserIsFinished
-          ? <Redirect to="/search" />
+          ? <Redirect to={`${ basePath }/search`} />
           : (
             <div data-testid="page-login" className="page-login">
               <img src={ LogoTrybeTunes } alt="Logo TrybeTunes" className="logo" />

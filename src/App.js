@@ -9,7 +9,7 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 import './index.css';
 
-const basePath = "/trybetunes"
+export const basePath = "/trybetunes"
 
 class App extends React.Component {
   render() {

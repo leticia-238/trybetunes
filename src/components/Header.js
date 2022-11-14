@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import LoadingMessage from './LoadingMessage';
 import LogoHeader from '../assets/LogoHeader.svg';
+import { basePath } from '../App';
 
 class Header extends React.Component {
   constructor() {
@@ -44,21 +45,21 @@ class Header extends React.Component {
               </header>
               <nav className="nav-bar">
                 <Link
-                  to="/search"
+                  to={`${ basePath }/search`}
                   data-testid="link-to-search"
                   className="nav-link"
                 >
                   Pesquisa
                 </Link>
                 <Link
-                  to="/favorites"
+                  to={`${ basePath }/favorites`}
                   data-testid="link-to-favorites"
                   className="nav-link"
                 >
                   Favoritas
                 </Link>
                 <Link
-                  to="/profile"
+                  to={`${ basePath }/profile`}
                   data-testid="link-to-profile"
                   className="nav-link"
                 >
