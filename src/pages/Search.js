@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import LoadingMessage from '../components/LoadingMessage';
 import AlbumList from '../components/AlbumList';
+import '../styles/Search.css'
 
 class Search extends React.Component {
   isMount = false

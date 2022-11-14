@@ -1,0 +1,65 @@
+.header {
+  align-items: center;
+  background-color: #023031;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-header {
+  margin: 0 35px 25px;
+  width: 100px;
+}
+
+.user-box-header {
+  align-items: center;
+  background-color: white;
+  border-radius: 17px;
+  display: flex;
+  margin: 0 50px;
+  padding: 2px;
+  width: 190px;
+}
+
+.header-user-image {
+  background-color: #2fc18c;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.header-user-name {
+  flex-grow: 1;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.nav-bar {
+  background-color: #f0f2f5;
+  box-shadow: 0 2px 5px #cacaca;
+  color: #2fc18c;
+  display: flex;
+  font: 700 1.3rem Epilogue , sans-serif;
+}
+
+.nav-link {
+  box-shadow: inset 0 7px 5px -3px #cacaca;
+  flex-grow: 1;
+  opacity: 0.9;
+  padding: 15px 0;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.nav-link:nth-child( 2 ) {
+  margin: 0 2px;
+}
+
+.nav-link:hover {
+  background-color: #0c5040;
+  box-shadow: inset 0 7px 5px -3px #014636;
+  color: white;
+  opacity: 1;
+}
+

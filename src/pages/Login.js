@@ -4,6 +4,7 @@ import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
 import LogoTrybeTunes from '../assets/LogoTrybeTunes.svg';
 import { basePath } from '../App';
+import '../styles/Login.css'
 
 class Login extends React.Component {
   isMount = false;

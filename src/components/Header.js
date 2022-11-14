@@ -4,6 +4,7 @@ import { getUser } from '../services/userAPI';
 import LoadingMessage from './LoadingMessage';
 import LogoHeader from '../assets/LogoHeader.svg';
 import { basePath } from '../App';
+import '../styles/Header.css'
 
 class Header extends React.Component {
   constructor() {

@@ -1,0 +1,21 @@
+.page-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.page-profile .form-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+.description {
+  grid-column: 1 / span 2;
+}
+
+textarea { resize: none;}
+
+.page-profile .btn {
+  grid-column: 1 / span 2;
+}
