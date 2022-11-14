@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
-import AlbumCard from '../components/AlbumCard';
+import AlbumCard from '../components/AlbumCard/AlbumCard';
 import MusicCard from '../components/MusicCard';
 
 class Album extends React.Component {
@@ -33,14 +33,14 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <AlbumCard { ...albumData } />
+        <AlbumCard {...albumData} />
         {
           songsList.map(({ trackId, ...songData }) => (
             <MusicCard
-              key={ trackId }
-              { ...songData }
-              trackId={ trackId }
-              removeFromFavorites={ () => {} }
+              key={trackId}
+              {...songData}
+              trackId={trackId}
+              removeFromFavorites={() => { }}
             />
           ))
         }
