@@ -1,0 +1,29 @@
+.music-card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5px;
+}
+
+.music-name {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.label-favorite {
+  align-items: center;
+  align-self: end;
+  background: rgb(255, 52, 86);
+  border-radius: 16px;
+  color: white;
+  display: inline-flex;
+  font-size: 0.8rem;
+  margin: 3px 5px;
+  padding: 3px 5px;
+}
+
+.checkbox-favorite {
+  accent-color: rgb(255, 52, 86);
+  margin-left: 3px;
+}

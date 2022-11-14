@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import MusicCard from '../components/MusicCard';
+import MusicCard from '../components/MusicCard/MusicCard';
 import LoadingMessage from '../components/LoadingMessage';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
@@ -43,16 +43,19 @@ class Favorites extends React.Component {
         <Header />
         { isLoading
           ? <LoadingMessage />
-          : (
-            favoriteSongsList.map(({ trackId, ...songData }) => (
-              <MusicCard
-                { ...songData }
-                key={ trackId }
-                trackId={ parseInt(trackId, 10) }
-                removeFromFavorites={ this.removeFromFavorites }
-              />
-            ))
-          )}
+          : <div className='container'>
+            {
+              favoriteSongsList.map(({ trackId, ...songData }) => (
+                <MusicCard
+                  { ...songData }
+                  key={ trackId }
+                  trackId={ parseInt(trackId, 10) }
+                  removeFromFavorites={ this.removeFromFavorites }
+                />
+              ))
+            }
+          </div> 
+        }
       </div>
     );
   }

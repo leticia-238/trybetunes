@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import getMusics from '../services/musicsAPI';
 import AlbumCard from '../components/AlbumCard/AlbumCard';
-import MusicCard from '../components/MusicCard';
+import MusicCard from '../components/MusicCard/MusicCard';
 
 class Album extends React.Component {
   constructor() {
@@ -34,16 +34,18 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         <AlbumCard {...albumData} />
-        {
-          songsList.map(({ trackId, ...songData }) => (
-            <MusicCard
-              key={trackId}
-              {...songData}
-              trackId={trackId}
-              removeFromFavorites={() => { }}
-            />
-          ))
-        }
+        <div className='container'>
+          {
+            songsList.map(({ trackId, ...songData }) => (
+              <MusicCard
+                key={trackId}
+                {...songData}
+                trackId={trackId}
+                removeFromFavorites={() => { }}
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
-import LoadingMessage from './LoadingMessage';
+import { addSong, removeSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
+import LoadingMessage from '../LoadingMessage';
+import './MusicCard.css'
 
 class MusicCard extends React.Component {
   isMount = false
@@ -52,22 +53,26 @@ class MusicCard extends React.Component {
         {addSongIsLoading
           ? <LoadingMessage />
           : (
-            <div>
-              <h3>{trackName}</h3>
-              <audio data-testid="audio-component" src={ previewUrl } controls>
+            <div className='music-card'>
+              <h3 className='music-name'>{trackName}</h3>
+              <audio data-testid="audio-component" src={previewUrl} controls>
                 <track kind="captions" />
                 O seu navegador não suporta o elemento
                 <code>audio</code>
                 .
               </audio>
-              <label htmlFor={ `checkbox-music-${trackId}` }>
-                Favorita
+              <label
+                className='label-favorite'
+                htmlFor={`checkbox-music-${trackId}`}
+              >
+                <span>Favorita</span>
                 <input
                   type="checkbox"
-                  id={ `checkbox-music-${trackId}` }
-                  data-testid={ `checkbox-music-${trackId}` }
-                  checked={ favoriteSong }
-                  onChange={ this.checkFavoriteSong }
+                  id={`checkbox-music-${trackId}`}
+                  data-testid={`checkbox-music-${trackId}`}
+                  checked={favoriteSong}
+                  onChange={this.checkFavoriteSong}
+                  className="checkbox-favorite"
                 />
               </label>
             </div>
