@@ -4,13 +4,15 @@
 
 &emsp;
 
-![imagem](./screen-capture.gif)
-
 ## Sobre o projeto
 
 ***Projeto realizado durante módulo de Frontend na Trybe, entre 07 e 20 de Março de 2022.***
 
 O Trybetunes é uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada.
+
+<p align="center">
+  <img width="600px" src="./screen-capture.gif" alt="Gif do funcionamento do app" />
+</p>
 
 Essa aplicação foi feita em [React](https://pt-br.reactjs.org/docs/getting-started.html) utilizando o conjunto de ferramentas [Create React App](https://pt-br.reactjs.org/docs/create-a-new-react-app.html) e o [React Router](https://v5.reactrouter.com/) para navegação entre as rotas.
 
